@@ -5,7 +5,8 @@
     dark
   >
     <div class="d-flex align-center">
-      <h2 class="text-4xl">{{ applicationName }}</h2>
+      <router-link to="/" class="text-4xl text-white">{{ applicationName }}</router-link>
+<!--      <h2 class="" @click="this.$router.push('')">{{ applicationName }}</h2>-->
     </div>
     <v-spacer></v-spacer>
     <div>
@@ -23,3 +24,9 @@ export default Vue.extend({
   },
 });
 </script>
+
+<style lang="scss">
+  .text-white {
+    color: white !important;
+  }
+</style>

@@ -4,14 +4,13 @@
       Time over, game finished!
     </h1>
     <div class="flex flex-column flex-sm-row justify-space-around game-height">
-      <game-results-card :players-score="playersScore"></game-results-card>
+      <game-results-card :player-score="playerScore.score"></game-results-card>
     </div>
   </section>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import axios from 'axios';
 import GameResultsCard from '../components/game/GameResultsCard.vue';
 
 export default Vue.extend({
@@ -32,7 +31,6 @@ export default Vue.extend({
   },
   async mounted() {
     await this.generateScore();
-    await this.updatePlayerScore();
   },
   methods: {
     generateScore() {
@@ -52,12 +50,6 @@ export default Vue.extend({
       }
       // eslint-disable-next-line prefer-destructuring
       this.playerScore = playersScore[0];
-    },
-    async updatePlayerScore() {
-      const { username } = this.$route.query;
-      const { score } = this.playerScore;
-      const res: { data: { playersRoom: {}; scores: [] } } = await axios.post(`http://localhost:3000/room/close/${this.roomId}`, { username, score });
-      this.playersScore = res.data.scores;
     },
   },
 });
