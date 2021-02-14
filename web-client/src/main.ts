@@ -13,7 +13,7 @@ import '@mdi/font/css/materialdesignicons.css';
 // Vue.use(new VueSocketIO({
 //     debug: true,
 //     // @ts-ignore
-//     connection: SocketIO('http://localhost:3000'),
+//     connection: SocketIO('https://fyc-server.herokuapp.com'),
 //   }),
 // );
 // Vue.use(socketio);

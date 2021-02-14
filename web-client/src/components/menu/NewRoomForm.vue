@@ -93,7 +93,7 @@ export default Vue.extend({
   },
   methods: {
     getThemesAndTests() {
-      return axios.get('http://localhost:3000/theme');
+      return axios.get('https://fyc-server.herokuapp.com/theme');
     },
     displayTests() {
       const themeSelected: any = this.themesContent.filter((theme) => theme.id === this.themeId)[0];

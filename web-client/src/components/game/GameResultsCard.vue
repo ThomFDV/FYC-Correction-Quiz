@@ -67,7 +67,7 @@ export default Vue.extend({
     async updatePlayerScore() {
       const { username } = this.$route.query;
       const score = this.playerScore;
-      const res: { data: { playersRoom: {}; scores: {score: number; playerUsername: string}[] } } = await axios.post(`http://localhost:3000/room/close/${this.$route.params.gameId}`, { username, score });
+      const res: { data: { playersRoom: {}; scores: {score: number; playerUsername: string}[] } } = await axios.post(`https://fyc-server.herokuapp.com/room/close/${this.$route.params.gameId}`, { username, score });
       this.playersScore = res.data.scores.sort((a: any, b: any) => b.score - a.score);
     },
   },

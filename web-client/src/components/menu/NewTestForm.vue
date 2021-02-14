@@ -120,13 +120,13 @@ export default Vue.extend({
   },
   methods: {
     getThemesAndTests() {
-      return axios.get('http://localhost:3000/theme');
+      return axios.get('https://fyc-server.herokuapp.com/theme');
     },
     async createTest() {
       if (this.newTheme) {
         await this.createTheme();
       }
-      const testData = await axios.post('http://localhost:3000/test', {
+      const testData = await axios.post('https://fyc-server.herokuapp.com/test', {
         name: this.testName,
         nbQuestion: 0,
         themeId: this.themeId,
@@ -134,22 +134,22 @@ export default Vue.extend({
       this.testId = testData.data.id;
     },
     async createTheme() {
-      const theme: any = await axios.post('http://localhost:3000/theme', { name: this.themeName });
+      const theme: any = await axios.post('https://fyc-server.herokuapp.com/theme', { name: this.themeName });
       this.themeId = theme.data.id;
     },
     async createQuestion(isEnding: boolean) {
-      const res = await axios.post('http://localhost:3000/question', {
+      const res = await axios.post('https://fyc-server.herokuapp.com/question', {
         content: this.questionName,
         testId: this.testId,
       });
-      await axios.post('http://localhost:3000/answer', {
+      await axios.post('https://fyc-server.herokuapp.com/answer', {
         content: this.goodAnswer,
         isCorrect: true,
         questionId: res.data.id,
       });
 
       for (let i = 0; i < this.wrongAnswers.length; i += 1) {
-        axios.post('http://localhost:3000/answer', {
+        axios.post('https://fyc-server.herokuapp.com/answer', {
           content: this.wrongAnswers[i],
           isCorrect: false,
           questionId: res.data.id,

@@ -32,6 +32,7 @@
       <v-text-field
         class="my-2"
         v-model="password"
+        type="password"
         label="Your password"
         color="primary"
         outlined
@@ -69,7 +70,7 @@ export default Vue.extend({
   },
   methods: {
     createUser() {
-      axios.post('http://localhost:3000/user', {
+      axios.post('https://fyc-server.herokuapp.com/user', {
         firstname: this.firstname,
         lastname: this.lastname,
         username: this.username,

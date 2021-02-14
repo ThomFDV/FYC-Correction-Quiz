@@ -66,11 +66,11 @@ export default Vue.extend({
   },
   methods: {
     async getRoomData() {
-      const room = await axios.get(`http://localhost:3000/room/${this.roomId}`);
+      const room = await axios.get(`https://fyc-server.herokuapp.com/room/${this.roomId}`);
       this.roomInfo = room.data;
     },
     async joinRoom() {
-      const room = await axios.post(`http://localhost:3000/room/join/${this.roomId}`, { username: this.$route.query.username });
+      const room = await axios.post(`https://fyc-server.herokuapp.com/room/join/${this.roomId}`, { username: this.$route.query.username });
       this.roomInfo.users.push(room.data);
       this.players.push(room.data);
     },

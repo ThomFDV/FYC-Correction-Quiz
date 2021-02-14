@@ -48,7 +48,7 @@ export default Vue.extend({
   },
   methods: {
     getQuiz() {
-      return axios.get(`http://localhost:3000/room/${this.$route.params.gameId}`);
+      return axios.get(`https://fyc-server.herokuapp.com/room/${this.$route.params.gameId}`);
     },
     updateAnswers(answer: { question: number; answer: number }) {
       if (this.selectedAnswers[answer.question]) {
