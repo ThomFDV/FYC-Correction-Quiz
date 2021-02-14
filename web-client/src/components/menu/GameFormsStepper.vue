@@ -86,7 +86,7 @@ export default Vue.extend({
         username: roomData.username,
         testId: roomData.testId,
       });
-      await this.$router.push(`game/${createdRoom.data.roomId}`);
+      await this.$router.push({ name: 'GameHome', params: { gameId: createdRoom.data.roomId }, query: { username: roomData.username } });
     },
   },
 });

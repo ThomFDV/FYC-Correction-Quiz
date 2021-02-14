@@ -60,9 +60,7 @@ export default Vue.extend({
     await this.getRoomData();
     this.theme = this.roomInfo.test.theme.name;
     this.addPlayers();
-    if (this.players.length > 0 && this.players[0].username !== this.$route.query.username) {
-      await this.joinRoom();
-    }
+    await this.joinRoom();
   },
   methods: {
     async getRoomData() {
@@ -70,6 +68,8 @@ export default Vue.extend({
       this.roomInfo = room.data;
     },
     async joinRoom() {
+      const userFound = this.players.find((el) => el.username === this.$route.query.username);
+      if (userFound) return;
       const room = await axios.post(`https://fyc-server.herokuapp.com/room/join/${this.roomId}`, { username: this.$route.query.username });
       this.roomInfo.users.push(room.data);
       this.players.push(room.data);
