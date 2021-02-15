@@ -4,7 +4,7 @@
       Time over, game finished!
     </h1>
     <div class="flex flex-column flex-sm-row justify-space-around game-height">
-      <game-results-card :player-score="playerScore.score"></game-results-card>
+      <game-results-card :player-score="this.playerScore.score"></game-results-card>
     </div>
   </section>
 </template>

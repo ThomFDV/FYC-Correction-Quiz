@@ -145,14 +145,14 @@ export default Vue.extend({
       await axios.post('https://fyc-server.herokuapp.com/answer', {
         content: this.goodAnswer,
         isCorrect: true,
-        questionId: res.data.id,
+        questionId: res.data[0].questionId,
       });
 
       for (let i = 0; i < this.wrongAnswers.length; i += 1) {
         axios.post('https://fyc-server.herokuapp.com/answer', {
           content: this.wrongAnswers[i],
           isCorrect: false,
-          questionId: res.data.id,
+          questionId: res.data[0].questionId,
         });
       }
 
